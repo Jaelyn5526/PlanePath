@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/activity_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="jaelyn.path.MainActivity">
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="60dp"
+       android:layout_gravity="center"
+       android:orientation="horizontal">
+      <Button
+          android:id="@+id/percent_30"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="5dp"
+          android:text="30%"/>
+      <Button
+          android:id="@+id/percent_60"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="5dp"
+          android:text="60%"/>
+      <Button
+          android:id="@+id/percent_100"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="5dp"
+          android:text="100%"/>
+   </LinearLayout>
+   <jaelyn.path.PathView
+       android:id="@+id/pathview"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>
+</LinearLayout>
