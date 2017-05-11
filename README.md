@@ -8,7 +8,7 @@ PlanePath
 3.飞机移动的速度与手指划过屏幕的速度相关<br>
 ## 效果图如下 ##
 
-![](https://raw.githubusercontent.com/Jaelyn5526/PlanePath/master/img/gif.gif)
+![](https://raw.githubusercontent.com/Jaelyn5526/PlanePath/master/img/fly_path.gif)
 
 ## 流程图 ##
 
