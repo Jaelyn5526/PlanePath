@@ -64,6 +64,8 @@ public class PathView extends View {
     //轨迹路径
     private Path path;
     private PathMeasure pathMeasure;
+    private float mPreX, mPreY;
+
     //path的关键点信息
     private ArrayList<PointTimeBean> pointBeans = new ArrayList<>();
     //当前手指的位置信息
@@ -189,7 +191,9 @@ public class PathView extends View {
      * 手指点下后的处理
      */
     public void touchDown(MotionEvent event) {
-        path.moveTo(event.getX(), event.getY());
+        mPreX = event.getX();
+        mPreY = event.getY();
+        path.moveTo(mPreX, mPreY);
         flyMatrix.postTranslate(event.getX() - flyBmp.getWidth() / 2,
                 event.getY() - flyBmp.getHeight() / 2);
         pathCanvas.drawPath(path, paint);
@@ -207,8 +211,8 @@ public class PathView extends View {
      * @param event
      */
     public void touchMove(MotionEvent event) {
-        float x = event.getX();
-        float y = event.getY();
+        float x = (mPreX + event.getX()) / 2;
+        float y = (mPreY + event.getY()) / 2;
         float pointTime = System.currentTimeMillis() - touchDownTime;
         if (!isInView(event)) {
             touchState = STATE_UP;
@@ -216,7 +220,10 @@ public class PathView extends View {
             x = point[0];
             y = point[1];
         }
-        path.lineTo(x, y);
+        path.quadTo(mPreX, mPreY, x, y);
+        mPreX = event.getX();
+        mPreY = event.getY();
+
         pathCanvas.drawPath(path, paint);
         //记录当前点的信息
         pathMeasure.setPath(path, false);
